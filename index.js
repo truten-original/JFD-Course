@@ -1,3 +1,4 @@
+ hw-1
 let health = prompt('Введите число параметра "здоровье" для персонажа')
 console.log(health)
 if ( health <= 0 || !health) {

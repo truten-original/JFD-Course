@@ -1,4 +1,4 @@
-getSumOfNumbers = (number, type) => {
+getSumOfNumbers = (number = 10, type) => {
     let sum = 0
     if (type === 'even') {
         for (i = 1; i <= number; i++) {

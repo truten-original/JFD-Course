@@ -25,11 +25,11 @@ getSumOfNumbers = (number, type = 'odd') => {
     for (i = 1; i <= number; i++) {
         const isEven = i % 2 === 0
         const isOdd = !isEven
-        if (type === 'even' && isEven) {
+        if (!type) {
             sum += i
         } else if (type === 'odd' && isOdd) {
             sum += i
-        } else if (type === '') {
+        } else if (type === 'even' && isEven) {
             sum += i
         }
     }

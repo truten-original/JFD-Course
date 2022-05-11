@@ -1,9 +1,10 @@
 let numbers = [10, 4, 100, -5, 54, 2]
 let sum = 0
-let num
+// let num
 
 // Через цикл for
 for (let i = 0; i < numbers.length; i += 1) {
+    let num
     num = numbers[i] ** 3
     sum += num
     console.log(sum, numbers[i])

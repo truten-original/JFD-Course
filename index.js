@@ -4,7 +4,7 @@ let sum = 0
 
 // Через цикл for
 for (let i = 0; i < numbers.length; i += 1) {
-    let num
+    let num = numbers[i]
     sum += num ** 3
     console.log(sum, numbers[i])
 

@@ -6,7 +6,7 @@ hasName = coffees.some((coffee) => {
 console.log(cofeName)
 if (hasName) {
     let coffeeToUpperCase = cofeName.replace(cofeName[0], cofeName[0].toUpperCase())
-    alert(`Держите ваш любимый кофе ${coffeeToUpperCase}. ${coffees.indexOf(coffeeToUpperCase) + 1}й по популярности в нашей кофейне.`)
+    alert(`Держите ваш любимый кофе ${coffeeToUpperCase}. ${coffees.findIndex((coffee) => coffee === coffeeToUpperCase) + 1}й по популярности в нашей кофейне.`)
 } else {
     alert('К сожалению, такого вида кофе нет в наличии')
 }

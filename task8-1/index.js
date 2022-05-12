@@ -1,18 +1,17 @@
 const peopleWaiting = ['Кристина', 'Олег', 'Кирилл', 'Мария', 'Светлана', 'Артем', 'Глеб']
 
-const giveParcel = (name) => {
-    let person = peopleWaiting.splice(peopleWaiting.indexOf(name), 1)
-    alert(`${person} получил(а) посылку. В очереди осталось ${peopleWaiting.length} человек.`)
+const giveParcel = () => {
+   let name = peopleWaiting.shift()
+   alert(`${name} получил(а) посылку. В очереди осталось ${peopleWaiting.length} человек.`)
 }
-giveParcel('Кристина')
-giveParcel('Олег')
-giveParcel('Кирилл')
+giveParcel()
+giveParcel()
+giveParcel()
 console.log(peopleWaiting)
 
 
 const leaveQueueWithoutParcel = () => {
-   let length = peopleWaiting.length
-    for(let i = 0; i<length; i++){
+    while(peopleWaiting.length > 0){
        let lostHuman = peopleWaiting.pop()
        alert(`${lostHuman} не получил(а) посылку и ушел(ла) из очереди`)
     }

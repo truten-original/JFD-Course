@@ -2,7 +2,7 @@ function getMathResult(arr){
     if(arr.length > 2){
         const signs = ['>', '<', '+', '-', '=', '*', '/']
         const trueArr =  arr.filter((item)=>{
-        if(signs.includes(item) || Boolean(Number(item))){
+        if(signs.includes(item) || Number(item)){
             return item
         }
 

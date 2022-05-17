@@ -15,5 +15,5 @@ const users = [
         lastActivity: 104
     }
 ]
-const onlineUsers = users.filter(user => user.status === 'online')
-console.log(onlineUsers)
+const onlineUsers = users.filter(user => user.status === 'online').map( user => user.username)
+alert(`Сейчас в онлайн следующие пользователи: ${onlineUsers.join(', ')}`)

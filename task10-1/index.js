@@ -1,12 +1,12 @@
 const getDateFormat = (date, separator = '.') => {
     let year = String(date.getFullYear())
-    let mounth = String(date.getMonth() + 1)
-    let dateNow = String(date.getDate())
+    let mounth = date.getMonth() + 1
+    let dateNow = date.getDate()
     if(mounth < 10){
-        mounth = 0 + mounth
+        mounth = 0 + String(mounth)
     }
     if(date < 10){
-        date = 0 + date
+        dateNow = 0 + String(date)
     }
     const units = [
         dateNow,

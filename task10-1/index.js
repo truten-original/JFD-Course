@@ -5,7 +5,7 @@ const getDateFormat = (date, separator = '.') => {
     if(mounth < 10){
         mounth = 0 + String(mounth)
     }
-    if(date < 10){
+    if(dateNow < 10){
         dateNow = 0 + String(date)
     }
     const units = [

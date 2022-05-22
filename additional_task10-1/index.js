@@ -21,32 +21,33 @@ const shoppingBag = [
   { product: 'Orange Juice', quantity: 500 },
 ]
 function getTotalPriceOfShoppingBag(shoppingBag) {
-  //   shoppingBag.reduce((acc, item) => {
-  //       return
-  //     if (groceries[item.product]['discount'] !== 0) {
-  //       acc +=
-  //         item.quantity *
-  //           groceries[item.product]['price'] *           //// почему то этот подход не работает
-  //           groceries[item.product]['discount'] /
-  //         100
-  //     }
-  //     else {
-  //       acc += item.quantity * groceries[item.product].price
-  //     }
-  //   }, 0)
-  let sum = 0
-  for (let i = 0; i < shoppingBag.length; i++) {
-    if (groceries[shoppingBag[i].product]['discount'] !== 0) {
-      sum +=
-        (shoppingBag[i].quantity *
-          groceries[shoppingBag[i].product]['price'] *
-          groceries[shoppingBag[i].product]['discount']) /
+  const sum = shoppingBag.reduce((acc, item) => {
+    if (groceries[item.product]['discount'] !== 0) {
+      acc +=
+        item.quantity *
+          groceries[item.product]['price'] * //// почему то этот подход не работает
+          groceries[item.product]['discount'] /
         100
     } else {
-      sum += shoppingBag[i].quantity * groceries[shoppingBag[i].product].price
+      acc += item.quantity * groceries[item.product].price
     }
-  }
-  return sum.toFixed(2)
+    
+    return acc
+  }, 0)
+  return sum
+  // let sum = 0
+  // for (let i = 0; i < shoppingBag.length; i++) {
+  //   if (groceries[shoppingBag[i].product]['discount'] !== 0) {
+  //     sum +=
+  //       (shoppingBag[i].quantity *
+  //         groceries[shoppingBag[i].product]['price'] *
+  //         groceries[shoppingBag[i].product]['discount']) /
+  //       100
+  //   } else {
+  //     sum += shoppingBag[i].quantity * groceries[shoppingBag[i].product].price
+  //   }
+  // }
+  // return sum.toFixed(2)
 }
 
 const totalPrice = getTotalPriceOfShoppingBag(shoppingBag)

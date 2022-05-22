@@ -3,14 +3,22 @@ function getAdultUsers(users) {
     const adultUsers = users.filter((item) => item.age >= 18)
     console.log(adultUsers)
   } else {
-    const usersEntries = Object.entries(users)
-    // console.log(usersEntries)
-    const trueUsers = usersEntries.filter((item) => item[1]['age'] >= 18)
-    const trueUsersObj = trueUsers.reduce((newObj, item) => {
-      newObj[item[0]] = item[1]
-      return newObj
+    // const usersEntries = Object.entries(users)
+    // // console.log(usersEntries)
+    // const trueUsers = usersEntries.filter((item) => item[1]['age'] >= 18)
+    // const trueUsersObj = trueUsers.reduce((newObj, item) => {
+    //   newObj[item[0]] = item[1]
+    //   return newObj
+    // }, {})
+    // console.log(trueUsersObj)
+    const usersKeys = Object.keys(users)
+    const trueUsers = usersKeys.filter((user) => users[user].age >= 18)
+    console.log(trueUsers)
+    const trueObject = trueUsers.reduce((obj, user) => {
+      obj[user] = users[user]
+      return obj
     }, {})
-    console.log(trueUsersObj)
+    console.log(trueObject)
   }
 }
 

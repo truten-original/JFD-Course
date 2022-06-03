@@ -96,22 +96,23 @@ modal.innerHTML = `<div class="delete-modal">
 </div>
 </div>`
 body.append(modal)
+let willBeDeleted
 taskList.addEventListener('click', (event) => {
     console.log(this)
     const id = event.target.closest('.task-item').dataset.taskId
-    let willBeDeleted = document.querySelector(`[data-task-id='${id}']`)
+    willBeDeleted = document.querySelector(`[data-task-id='${id}']`)
     if (event.target.classList.contains('task-item__delete-button')) {
         modal.classList.remove('modal-overlay_hidden')
     }
-    modal.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-modal__cancel-button')) {
-            willBeDeleted = null
-            modal.classList.add('modal-overlay_hidden')
-        } else if (event.target.classList.contains('delete-modal__confirm-button')) {
-            modal.classList.add('modal-overlay_hidden')
-            if (willBeDeleted) {
-                willBeDeleted.remove()
-            }
+
+})
+modal.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-modal__cancel-button')) {
+        modal.classList.add('modal-overlay_hidden')
+    } else if (event.target.classList.contains('delete-modal__confirm-button')) {
+        modal.classList.add('modal-overlay_hidden')
+        if (willBeDeleted) {
+            willBeDeleted.remove()
         }
-    })
+    }
 })

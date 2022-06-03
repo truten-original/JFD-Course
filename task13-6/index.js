@@ -54,7 +54,6 @@ tasksArr.forEach((item) => {
 
 form.addEventListener('submit', (event) => {
     event.preventDefault()
-    console.log(tasksArr)
     const tasksText = tasks.map((item) => {
         item = item.text.toLowerCase()
         return item
@@ -77,8 +76,9 @@ form.addEventListener('submit', (event) => {
         }
         tasks.unshift(task)
         const LocaltasksArr = createTaskArr(tasks)
-        taskList.prepend(LocaltasksArr[0])
+        taskList.append(LocaltasksArr[0])
     }
+    input.value = null
 })
 const modal = document.createElement('div')
 modal.className = 'modal-overlay modal-overlay_hidden'
@@ -97,17 +97,21 @@ modal.innerHTML = `<div class="delete-modal">
 </div>`
 body.append(modal)
 taskList.addEventListener('click', (event) => {
+    console.log(this)
     const id = event.target.closest('.task-item').dataset.taskId
-    const wiiBeDeleted = document.querySelector(`[data-task-id='${id}']`)
+    let willBeDeleted = document.querySelector(`[data-task-id='${id}']`)
     if (event.target.classList.contains('task-item__delete-button')) {
         modal.classList.remove('modal-overlay_hidden')
     }
     modal.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-modal__cancel-button')) {
+            willBeDeleted = null
             modal.classList.add('modal-overlay_hidden')
         } else if (event.target.classList.contains('delete-modal__confirm-button')) {
             modal.classList.add('modal-overlay_hidden')
-            wiiBeDeleted.remove()
+            if (willBeDeleted) {
+                willBeDeleted.remove()
+            }
         }
     })
 })
@@ -115,9 +119,9 @@ const taskItems = document.querySelectorAll('.task-item')
 const buttons = document.querySelectorAll('button')
 
 document.addEventListener('keydown', (event) => {
-    event.preventDefault()
     const { key } = event
     if (key === 'Tab') {
+        event.preventDefault()
         if (!body.style.backgroundColor) {
             body.style.backgroundColor = '#24292E'
             taskItems.forEach((item) => {

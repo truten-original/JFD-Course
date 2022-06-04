@@ -48,6 +48,7 @@ class CustomSelect {
                 console.log(typeof (event.target.dataset.value))
                 this.#currentSelectedOption = this.#options.find((option) => option.value === Number(event.target.dataset.value))
                 document.querySelector('span').innerText = `${this.selectedValue.text}`
+                ul.classList.remove('active')
             }
         })
     }

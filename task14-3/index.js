@@ -15,7 +15,7 @@ function getFastestLoadedPhoto(ids = [1, 2, 3]) {
     Promise.race(photosP)
         .then((response) => {
             const respopnseToJson = response.json()
-            if (respopnseToJson.ok === false) {
+            if (respopnseToJson.ok === 'false') {
                 throw new Error('error!!!!!!!!')
             } else {
                 return respopnseToJson

@@ -1,6 +1,6 @@
 const renderAlbums = async () => {
     showLoader()
-    const albumsUrl = 'https://jsonplaceholder.typicode.com/album'
+    const albumsUrl = 'https://jsonplaceholder.typicode.com/albums'
     const ul = document.createElement('ul')
     const body = document.querySelector('body')
     ul.style.maxWidth = '800px'
@@ -10,18 +10,16 @@ const renderAlbums = async () => {
     try {
         const albumsP = await fetch(albumsUrl)
         const responses = await albumsP.json()
-        if (!responses.ok) {
-            throw new Error('Произошла ошибка в получении данных об альбомах...')
-        }
         responses.forEach(album => {
             createElement(ul, album.title)
-        });
+        })
 
     }
     catch (error) {
         ul.style.color = 'red'
         ul.style.fontSize = '150px'
-        ul.innerText = `${error}`
+        console.log(error)
+        ul.innerText = `Произошла ошибка в получении данных об альбомах...`
     }
     finally {
         showLoader()

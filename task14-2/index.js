@@ -10,14 +10,17 @@ function create(name) {
     element.innerHTML = `<a href="#">${name}</a>`
     document.querySelector('ol').append(element)
 }
-function getAndCreateUsersByIds(ids = [1, 2, 3]) {
+function getAndCreateUsersByIds(ids = [1, 2, 3, 6699]) {
     createLoader()
     const users = ids.map(id => {
         return fetch(`${usersUrl}/${id}`)
     })
     Promise.all(users)
         .then(responses => {
-            if (responses.includes(item => item.json().ok === 'false')) {
+            // if (responses.includes(item => item.ok === false)) {    //не работает, не понимаю почему
+            //     throw new Error('error!!!!!!!!!!!!')
+            // }
+            if (responses.find(item => item.ok === false)) {
                 throw new Error('error!!!!!!!!!!!!')
             }
             const usersP = responses.map(response => {

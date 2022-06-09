@@ -1,4 +1,3 @@
-const usersUrl = 'https://jsonplaceholder.typicode.com/users'
 const span = document.createElement('span')
 span.innerText = '...loading'
 function createLoader() {
@@ -11,6 +10,7 @@ function create(name) {
     document.querySelector('ol').append(element)
 }
 function getAndCreateUsersByIds(ids = [1, 2, 3, 6699]) {
+    const usersUrl = 'https://jsonplaceholder.typicode.com/users'
     createLoader()
     const users = ids.map(id => {
         return fetch(`${usersUrl}/${id}`)
@@ -21,7 +21,7 @@ function getAndCreateUsersByIds(ids = [1, 2, 3, 6699]) {
             //     throw new Error('error!!!!!!!!!!!!')
             // }
             if (responses.find(item => item.ok === false)) {
-                throw new Error('error!!!!!!!!!!!!')
+                responses = responses.filter(item => item.status === 200)
             }
             const usersP = responses.map(response => {
                 return response.json()

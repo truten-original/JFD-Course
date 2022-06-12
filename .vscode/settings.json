@@ -1,6 +1,0 @@
-{
-    "editor.renderLineHighlightOnlyWhenFocus": false,
-    "prettier.semi": false,
-    "prettier.jsxSingleQuote": false,
-    "prettier.singleQuote": true
-}

@@ -1,3 +1,4 @@
+
 function getKiller(suspectInfo, deadPeople) {
     let buglar
     for (item in suspectInfo) {
@@ -21,3 +22,4 @@ getKiller(
     },
     ['Lucas', 'Bill']
 )
+
